@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/textures/proyectile_player.png" type="Texture" id=2]
 
 [node name="PlayerProjectile" instance=ExtResource( 1 )]
-speed = 100.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
