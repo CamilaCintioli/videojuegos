@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/background.png" type="Texture" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://entities/enemies/Turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/enemies/TurretsSpawner.gd" type="Script" id=5]
+[ext_resource path="res://assets/textures/floor.png" type="Texture" id=6]
+[ext_resource path="res://entities/Ball.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1465.04, 191.15 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -134.0
+margin_right = 661.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 400.53, 300.837 )
+
+[node name="Floor" parent="." instance=ExtResource( 8 )]
+
+[node name="TurretsSpawner" type="Node" parent="."]
+script = ExtResource( 5 )
+turret_scene = ExtResource( 4 )
+
+[node name="Ball" parent="." instance=ExtResource( 7 )]
+position = Vector2( 269.928, 202.656 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 1335.58, 690.929 )
+scale = Vector2( 43.9947, 5.50457 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1313.96, 697.632 )
+shape = SubResource( 1 )

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/textures/green_circle.png" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 62.4747
+
+[node name="Ball" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 221.997, 221.997 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 222.58, 225.01 )
+scale = Vector2( 0.263673, 0.258376 )
+texture = ExtResource( 1 )
