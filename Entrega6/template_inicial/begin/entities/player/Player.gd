@@ -51,6 +51,14 @@ func _handle_move_input():
 		body.offset.x = 50
 	
 	
+	
+func _handle_roll():
+	if move_direction < 0:
+		body.rotation_degrees = abs(body.rotation_degrees) * 1
+	elif move_direction > 0:
+		body.rotation_degrees = abs(body.rotation_degrees) * -1
+	
+
 func _handle_deacceleration():
 	velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
@@ -80,7 +88,6 @@ func _play_animation(animation_name:String):
 	if player_animation.has_animation(animation_name):
 		player_animation.play(animation_name)
 
-
 func notify_hit(amount):
 	PlayerData.current_health += min(amount, PlayerData.max_health)
 
@@ -96,4 +103,6 @@ func is_on_floor()->bool:
 		is_colliding = is_colliding || raycast.is_colliding()
 	return is_colliding
 
+func stopped_rolling()->bool:
+	return ! player_animation.is_playing()
 
